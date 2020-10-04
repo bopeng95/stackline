@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
+import Spinner from 'components/Spinner';
 import Container from 'components/Container';
 import Header from 'components/Header';
 import ItemLayout from 'components/ItemLayout';
@@ -22,10 +23,12 @@ const App = (props) => {
     loadData();
   }, []);
 
+  const Component = <ItemLayout item={item} />;
+
   return (
     <Container>
       <Header title={title} />
-      <ItemLayout item={item} />
+      {loading ? <Spinner type="TailSpin" size={60} /> : Component}
     </Container>
   );
 };

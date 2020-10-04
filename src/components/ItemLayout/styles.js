@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   grid-template-areas: 'sidebar main';
   grid-template-columns: ${({ sidebar }) => sidebar}px auto;
   grid-template-rows: auto;
+  grid-column-gap: 20px;
 `;
 
 export const Content = styled.div`
@@ -21,4 +22,9 @@ export const ImageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+export const DetailWrapper = styled.div`
+  grid-area: main;
+  background: white;
 `;

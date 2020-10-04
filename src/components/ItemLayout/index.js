@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import Sidebar from './Sidebar';
+import Main from './Main';
 import { Wrapper } from './styles';
 
 const ItemLayout = (props) => {
-  const { item, sidebar = 350 } = props;
+  const { item, sidebarWidth = 350 } = props;
   const { sales, ...rest } = item;
 
   const menu = ['Overview', 'Sales'];
@@ -15,13 +16,14 @@ const ItemLayout = (props) => {
   console.log(item);
 
   return (
-    <Wrapper sidebar={sidebar}>
+    <Wrapper sidebar={sidebarWidth}>
       <Sidebar
         menu={menu}
         selected={selected}
         changeMenu={changeMenu}
         {...rest}
       />
+      <Main sales={sales} />
     </Wrapper>
   );
 };
