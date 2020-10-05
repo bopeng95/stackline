@@ -7,7 +7,7 @@ import { Wrapper, Head, Body, Row, ItemHead, ItemBody } from './styles';
 
 const Table = (props) => {
   const { name, list } = props;
-  const [sortedList, startSort] = useSortTable(list, {
+  const [sortedList, startSort, config] = useSortTable(list, {
     key: 'weekEnding',
     direction: 'asc',
   });
@@ -25,17 +25,19 @@ const Table = (props) => {
     : [];
 
   const head = headers.map((item) => {
+    const { key, direction } = config;
     const onClick = () => startSort(item);
+    const sortIcon = key === item && direction === 'asc' ? 'asc' : 'dec';
     return (
       <ItemHead key={item}>
         <Text asButton onClick={onClick}>
-          {item}
+          {`${item} (${sortIcon})`}
         </Text>
       </ItemHead>
     );
   });
 
-  const body = sortedList.map((item, idx) => {
+  const body = sortedList.map((item) => {
     const keys = Object.keys(item);
     const values = keys.map((key, i) => {
       const isMoney = i === 1 || i === 2 || i === 4;
@@ -46,7 +48,7 @@ const Table = (props) => {
         </ItemBody>
       );
     });
-    return <Row key={`${name}-tableNum${idx}`}>{values}</Row>;
+    return <Row key={`${name}${item[keys[0]]}`}>{values}</Row>;
   });
 
   return (
