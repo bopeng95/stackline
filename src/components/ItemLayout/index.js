@@ -6,14 +6,12 @@ import { Wrapper } from './styles';
 
 const ItemLayout = (props) => {
   const { item, sidebarWidth = 350 } = props;
-  const { sales, ...rest } = item;
+  const { sales = [], ...rest } = item;
 
   const menu = ['Overview', 'Sales'];
   const [selected, setSelected] = useState(menu[1]);
 
   const changeMenu = (i) => setSelected(menu[i]);
-
-  console.log(item);
 
   return (
     <Wrapper sidebar={sidebarWidth}>

@@ -15,6 +15,7 @@ export const Content = styled.div`
 export const SideWrapper = styled.div`
   grid-area: sidebar;
   background: white;
+  align-self: start;
 `;
 
 export const ImageWrapper = styled.div`

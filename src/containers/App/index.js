@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import Spinner from 'components/Spinner';
@@ -17,7 +16,7 @@ import * as actions from './redux/actions';
 const App = (props) => {
   const { headerState, data, loadData } = props;
   const { title } = headerState;
-  const { loading, error, item } = data;
+  const { loading, item } = data;
 
   useEffect(() => {
     loadData();

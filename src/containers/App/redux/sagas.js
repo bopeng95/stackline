@@ -9,11 +9,12 @@ const delay = (s) => new Promise((res) => setTimeout(res, s * 1000));
 
 function* getData() {
   try {
-    console.log('getting data');
-    // imitate a real api call with 3 seconds delay
-    yield delay(3);
+    // imitate a real api call with 2 seconds delay
+    console.log('retrieving data for 2 seconds (imitating real api call)');
+    yield delay(2);
     yield put(loadDataSuccess(jsonData[0]));
   } catch (e) {
+    // if errors occur I handle it here
     yield put(loadDataError(e.message));
   }
 }

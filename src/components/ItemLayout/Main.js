@@ -6,9 +6,10 @@ import { DetailWrapper } from './styles';
 
 const ItemTable = (props) => {
   const { sales = [] } = props;
+
   return (
     <DetailWrapper>
-      <Table list={sales} />
+      <Table name="sales" list={sales} />
     </DetailWrapper>
   );
 };
